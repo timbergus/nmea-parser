@@ -27,7 +27,7 @@ void split_string_by_comma(const char *s, char *terms[]) {
 
   int con = 0;
 
-  for (size_t i = 0; i < sizeof(pos) / sizeof(int); i++) {
+  for (size_t i = 0; i </*sizeof(pos) / sizeof(int)*/ 13; i++) {
     snprintf(buffer, pos[i + 1] - pos[i], "%s", s + pos[i] + 1);
     terms[con] = strdup(buffer);
     con++;
@@ -63,7 +63,7 @@ float formatCoordinate(char *s, char *d) {
 }
 
 char *formatTime(const char *s) {
-  char *time = reinterpret_cast<char *>(malloc(8 * sizeof(char)));
+  char *time = (char *)malloc(9 * sizeof(char));
   char hours[] = "00";
   char minutes[] = "00";
   char seconds[] = "00";
@@ -72,8 +72,7 @@ char *formatTime(const char *s) {
   strncpy(minutes, s + 2, 2 * sizeof(char));
   strncpy(seconds, s + 4, 2 * sizeof(char));
 
-  snprintf(time, sizeof(time) + sizeof(char), "%s:%s:%s",
-    hours, minutes, seconds);
+  snprintf(time, 9, "%s:%s:%s", hours, minutes, seconds);
   return time;
 }
 
@@ -87,7 +86,7 @@ char *formatDate(const char *s) {
   strncpy(month, s + 2, 2 * sizeof(char));
   strncpy(year, s + 4, 2 * sizeof(char));
 
-  snprintf(date, sizeof(date) + sizeof(char), "%s/%s/%s", day, month, year);
+  snprintf(date, 9, "%s/%s/%s", day, month, year);
   return date;
 }
 

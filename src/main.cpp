@@ -6,7 +6,7 @@ int main() {
   GNRMC gnrmc;
 
   FILE *file =
-    fopen("/Users/Gustavo/Dropbox/Projects/C/nmea-parser/src/samples.txt", "r");
+    fopen("/var/lib/cloud9/projects/nmea-parser/src/samples.txt", "r");
 
   if (file == NULL) {
     return 1;
@@ -24,8 +24,9 @@ int main() {
       printf("Time: %s\t", gnrmc.getTime());
       printf("Date: %s\t", gnrmc.getDate());
       printf("Speed: %f km/h\n", gnrmc.getSpeed());
+      
+      usleep(1000000);
     }
-    usleep(1000000);
   }
 
   return 0;
