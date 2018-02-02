@@ -27,7 +27,7 @@ void split_string_by_comma(const char *s, char *terms[]) {
 
   int con = 0;
 
-  for (size_t i = 0; i </*sizeof(pos) / sizeof(int)*/ 13; i++) {
+  for (int i = 0; i < count; i++) {
     snprintf(buffer, pos[i + 1] - pos[i], "%s", s + pos[i] + 1);
     terms[con] = strdup(buffer);
     con++;
